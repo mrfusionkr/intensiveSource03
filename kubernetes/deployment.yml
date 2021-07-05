@@ -1,0 +1,285 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: courseManagement
+  labels:
+    app: courseManagement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: courseManagement
+  template:
+    metadata:
+      labels:
+        app: courseManagement
+    spec:
+      containers:
+        - name: courseManagement
+          image: username/courseManagement:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: professorApplyment
+  labels:
+    app: professorApplyment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: professorApplyment
+  template:
+    metadata:
+      labels:
+        app: professorApplyment
+    spec:
+      containers:
+        - name: professorApplyment
+          image: username/professorApplyment:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: professorEvaluation
+  labels:
+    app: professorEvaluation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: professorEvaluation
+  template:
+    metadata:
+      labels:
+        app: professorEvaluation
+    spec:
+      containers:
+        - name: professorEvaluation
+          image: username/professorEvaluation:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification
+  labels:
+    app: notification
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification
+  template:
+    metadata:
+      labels:
+        app: notification
+    spec:
+      containers:
+        - name: notification
+          image: username/notification:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myPage
+  labels:
+    app: myPage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myPage
+  template:
+    metadata:
+      labels:
+        app: myPage
+    spec:
+      containers:
+        - name: myPage
+          image: username/myPage:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: courseManagement
+  labels:
+    app: courseManagement
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: courseManagement
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: professorApplyment
+  labels:
+    app: professorApplyment
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: professorApplyment
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: professorEvaluation
+  labels:
+    app: professorEvaluation
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: professorEvaluation
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification
+  labels:
+    app: notification
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: notification
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myPage
+  labels:
+    app: myPage
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: myPage
+
