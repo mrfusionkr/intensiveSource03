@@ -41,6 +41,11 @@ server:
 feign:
   hystrix:
     enabled: true
+
+hystrix:
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 610
 ---
 
 spring:
@@ -66,3 +71,15 @@ spring:
         event-out:
           destination: professor
           contentType: application/json
+api:
+  url:
+    professor: ${professor-url}
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 1000

@@ -1,0 +1,11 @@
+professor/AbstractEvent.class
+professor/CourseManagementController.class
+professor/CourseManagementRepository.class
+professor/CourseCompleted.class
+professor/CourseManagementApplication.class
+professor/config/kafka/KafkaProcessor.class
+professor/AbstractEvent$1.class
+professor/PolicyHandler.class
+professor/CourseRegisted.class
+professor/CourseCanceled.class
+professor/CourseManagement.class

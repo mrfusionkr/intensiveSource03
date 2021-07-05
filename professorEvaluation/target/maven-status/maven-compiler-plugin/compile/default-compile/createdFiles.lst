@@ -1,0 +1,14 @@
+professor/AbstractEvent.class
+professor/ProfessorConfirmed.class
+professor/PolicyHandler.class
+professor/ProfessorEvaluationController.class
+professor/external/CourseManagement.class
+professor/ProfessorApplyed.class
+professor/external/CourseManagementService.class
+professor/ApplymentCanceled.class
+professor/external/CourseCreationServiceFallback.class
+professor/ProfessorEvaluation.class
+professor/config/kafka/KafkaProcessor.class
+professor/AbstractEvent$1.class
+professor/ProfessorEvaluationRepository.class
+professor/ProfessorEvaluationApplication.class

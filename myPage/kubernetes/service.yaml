@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: myPage
+  name: mypage
+  namespace: professor
   labels:
-    app: myPage
+    app: mypage
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: myPage
+    app: mypage

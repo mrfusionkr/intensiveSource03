@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
+
  @RestController
  public class CourseManagementController {
 
@@ -25,11 +28,29 @@ import javax.servlet.http.HttpServletResponse;
 
        Long courseNo = Long.valueOf(request.getParameter("courseNo"));
        Long professorNo = Long.valueOf(request.getParameter("professorNo"));
+
+        // Circuit Breaker 발생을 위한 임시 로직 ----------------------------- Start
+        /*
+        try {
+            SimpleDateFormat defaultSimpleDateFormat = new SimpleDateFormat("YYYYMMddHHmmssSSS");
+            System.out.println("@@@@@@@@@@@@@@@@@sleepTimeBefore(" + request.getParameter("professorNm") + "): " +  defaultSimpleDateFormat.format(new Date()) );
+
+            Long lSleepTime = (long)(800 + Math.random() * 300);
+            System.out.println("@@@@@@@@@@@@@@@@@sleepTime: " + Long.toString(lSleepTime) );
+            Thread.sleep(lSleepTime);
+
+            System.out.println("@@@@@@@@@@@@@@@@@sleepTimeEnd(" + request.getParameter("professorNm") + "): " + defaultSimpleDateFormat.format(new Date()) );
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        */
+        // Circuit Breaker 발생을 위한 임시 로직 ----------------------------- End
        
        CourseManagement courseManagement = courseManagementRepository.findByCourseNo(courseNo);
 
-       System.out.println("@@@@@@@@@@@@@@@@@courseManagement.courseNo@" + Long.toString(courseManagement.getCourseNo()));
+       //System.out.println("@@@@@@@@@@@@@@@@@courseManagement.courseNo@" + Long.toString(courseManagement.getCourseNo()));
  
+        // Circuit Breaker 발생을 위한 임시 주석처리
        if(courseManagement.getProfessorNo() == null || courseManagement.getProfessorNo() != professorNo){
             System.out.println("과목에 교수정보 저장");
             courseManagement.setProfessorNo(professorNo);

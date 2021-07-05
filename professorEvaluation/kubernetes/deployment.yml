@@ -1,37 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: professorEvaluation
+  name: professorevaluation
+  namespace: professor
   labels:
-    app: professorEvaluation
+    app: professorevaluation
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: professorEvaluation
+      app: professorevaluation
   template:
     metadata:
       labels:
-        app: professorEvaluation
+        app: professorevaluation
     spec:
       containers:
-        - name: professorEvaluation
-          image: username/professorEvaluation:latest
+        - name: professorevaluation
+          image: user11skccacr.azurecr.io/professorevaluation:v1.6
           ports:
             - containerPort: 8080
-          readinessProbe:
-            httpGet:
-              path: '/actuator/health'
-              port: 8080
-            initialDelaySeconds: 10
-            timeoutSeconds: 2
-            periodSeconds: 5
-            failureThreshold: 10
-          livenessProbe:
-            httpGet:
-              path: '/actuator/health'
-              port: 8080
-            initialDelaySeconds: 120
-            timeoutSeconds: 2
-            periodSeconds: 5
-            failureThreshold: 5
+          env:
+            - name: professor-url
+              valueFrom:
+                configMapKeyRef:
+                  name: professor-cm
+                  key: url
+          #readinessProbe:
+          #  httpGet:
+          #    path: '/actuator/health'
+          #    port: 8080
+          #  initialDelaySeconds: 10
+          #  timeoutSeconds: 2
+          #  periodSeconds: 5
+          #  failureThreshold: 10
+          #livenessProbe:
+          #  httpGet:
+          #    path: '/actuator/health'
+          #    port: 8080
+          #  initialDelaySeconds: 120
+          #  timeoutSeconds: 2
+          #  periodSeconds: 5
+          #  failureThreshold: 5

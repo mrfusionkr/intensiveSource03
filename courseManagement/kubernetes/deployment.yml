@@ -1,37 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: courseManagement
+  name: coursemanagement
+  namespace: professor
   labels:
-    app: courseManagement
+    app: coursemanagement
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: courseManagement
+      app: coursemanagement
   template:
     metadata:
       labels:
-        app: courseManagement
+        app: coursemanagement
     spec:
       containers:
-        - name: courseManagement
-          image: username/courseManagement:latest
+        - name: coursemanagement
+          image: user11skccacr.azurecr.io/coursemanagement:v1.9
           ports:
             - containerPort: 8080
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 250m
           readinessProbe:
             httpGet:
-              path: '/actuator/health'
+              path: '/courseManagements'
               port: 8080
             initialDelaySeconds: 10
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 10
-          livenessProbe:
-            httpGet:
-              path: '/actuator/health'
-              port: 8080
-            initialDelaySeconds: 120
-            timeoutSeconds: 2
-            periodSeconds: 5
-            failureThreshold: 5
+          #livenessProbe:
+          #  httpGet:
+          #    path: '/coursemanagement/failed'
+          #    port: 8090
+          #  initialDelaySeconds: 30
+          #  timeoutSeconds: 2
+          #  periodSeconds: 5
+          #  failureThreshold: 5

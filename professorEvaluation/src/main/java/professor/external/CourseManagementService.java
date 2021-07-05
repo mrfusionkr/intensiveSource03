@@ -17,8 +17,9 @@ public interface CourseManagementService {
 }
 */
 
-@FeignClient(name="courseManagement", url="http://localhost:8081", fallback=CourseCreationServiceFallback.class)
-//@FeignClient(name="courseManagement", url="http://${api.url.course}:8080", fallback=CourseCreationServiceFallback.class)
+//@FeignClient(name="courseManagement", url="http://localhost:8081", fallback=CourseCreationServiceFallback.class)
+@FeignClient(name="courseManagement", url="http://${api.url.professor}:8080", fallback=CourseCreationServiceFallback.class)
+//@FeignClient(name="courseManagement", url="http://${api.url.professor}:8080") // Circuit Breaker 로 임시 주석
 public interface CourseManagementService {
     @RequestMapping(method= RequestMethod.GET, path="/courseManagements/completeCourse")
     public boolean completeCourse(@RequestParam("courseNo") Long courseNo

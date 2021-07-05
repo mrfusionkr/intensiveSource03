@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: professorApplyment
+  name: professorapplyment
+  namespace: professor
   labels:
-    app: professorApplyment
+    app: professorapplyment
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: professorApplyment
+    app: professorapplyment

@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: courseManagement
+  name: coursemanagement
+  namespace: professor
   labels:
-    app: courseManagement
+    app: coursemanagement
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: courseManagement
+    app: coursemanagement
