@@ -79,7 +79,7 @@
 ```
 교과등록 – courseManagement
 담당교수신청 - professorApplyment
-담당교수확정 - professorEvaluation
+담당교수평가 - professorEvaluation
 문자알림이력 - notification
 진행현황조회 - myPage
 ```
