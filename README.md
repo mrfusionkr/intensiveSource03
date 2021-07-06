@@ -2,7 +2,7 @@
 
 ### Repositories
 
-- https://github.com/mrfusionkr/intensiveSource03.git
+- https://github.com/mrfusionkr/courceRegist01.git
 
 
 
@@ -81,7 +81,7 @@
 담당교수신청 - professorApplyment
 담당교수확정 - professorEvaluation
 문자알림이력 - notification
-수강과목현황조회 - myPage
+진행현황조회 - myPage
 ```
 
 
@@ -185,7 +185,7 @@
 ```
 1) 교과담당은 교과등록을 취소 할 수 있다. 
     교과등록이 취소되면 담당교수신청등록 및 담당교수확정도 취소된다.
-2) 수강신청, 수강신청 취소, 수강확정 시 교수에게 SMS를 발송한다.
+2) 담당교수신청, 담당교수신청 취소, 담당교수확정 시 교수에게 SMS를 발송한다.
 3) 교수는 담당교수신청현황을 조회 할 수 있다.
 ```
 
